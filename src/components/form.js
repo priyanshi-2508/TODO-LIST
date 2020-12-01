@@ -4,7 +4,7 @@ import React from 'react';
 const Form = ({ setInputText }) => {
     //Here we can write JS code and functions
     const inputTextHandler = (e) => {
-        console.log(e.target.value);
+        //console.log(e.target.value);
         setInputText(e.target.value);
     };
     return(
