@@ -1,16 +1,24 @@
 import React from 'react';
 
-
-const Form = ({ setInputText }) => {
+const Form = ({ setInputText,todos,setTodos,inputText }) => {
     //Here we can write JS code and functions
     const inputTextHandler = (e) => {
-        //console.log(e.target.value);
         setInputText(e.target.value);
+        //console.log(e.target.value);
+
+    };
+    const submitTodoHandler = (e) =>{
+            e.preventDefault();
+            setTodos([
+                ...todos,
+                {text : inputText,completed:false ,id: Math.random()*1000 }
+            ]);
+        setInputText("");
     };
     return(
-            <form>
-            <input type="text" onChange= {inputTextHandler} className="todo-input" />
-            <button className="todo-button" type="submit">
+        <form>
+            <input value={inputText} type="text" onChange= {inputTextHandler} className="todo-input" />
+            <button onClick= {submitTodoHandler} className="todo-button" type="submit">
                 <i className="fas fa-plus-square"></i>
             </button>
             <div className="select">
@@ -20,8 +28,7 @@ const Form = ({ setInputText }) => {
                 <option value="uncompleted">Uncompleted</option>
                 </select>
             </div>
-            </form>
-
+        </form>
     );
 }
 export default Form;
